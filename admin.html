@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Sistema de Empréstimo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+                <h2>ROBTEC</h2>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="dashboard">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-section="notebooks">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                    <span>Notebooks</span>
+                </a>
+                <a href="#" class="nav-item" data-section="teachers">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Professores</span>
+                </a>
+                <a href="#" class="nav-item" data-section="loans">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span>Empréstimos</span>
+                </a>
+                <a href="#" class="nav-item" data-section="returns">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="1 4 1 10 7 10"></polyline>
+                        <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                    </svg>
+                    <span>Devoluções</span>
+                </a>
+                <a href="#" class="nav-item" data-section="reports">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                    <span>Relatórios</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button class="btn-logout" id="logoutBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    <span>Sair</span>
+                </button>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                    <h1 id="pageTitle">Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <span class="user-info">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <span id="currentUser">admin</span>
+                    </span>
+                </div>
+            </header>
+            
+            <!-- Dashboard Section -->
+            <section id="dashboard-section" class="content-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon notebooks">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalNotebooks" class="stat-value notebooks">0</h3>
+                            <p>Total de Notebooks</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon teachers">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalTeachers" class="stat-value teachers">0</h3>
+                            <p>Professores Cadastrados</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon available">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="availableNotebooks" class="stat-value available">0</h3>
+                            <p>Disponíveis</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon loaned">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="loanedNotebooks" class="stat-value loaned">0</h3>
+                            <p>Emprestados</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recent-loans">
+                    <h2>Empréstimos Recentes</h2>
+                    <div id="recentLoansList" class="loans-table">
+                        <p class="empty-state">Nenhum empréstimo registrado</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Notebooks Section -->
+            <section id="notebooks-section" class="content-section">
+                <div class="section-header">
+                    <h2>Gerenciar Notebooks</h2>
+                    <button class="btn btn-primary" id="addNotebookBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        Adicionar Notebook
+                    </button>
+                </div>
+                
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>Patrimônio</th>
+                                <th>Estado</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="notebooksTableBody">
+                        </tbody>
+                    </table>
+                    <p class="empty-state" id="noNotebooksMsg">Nenhum notebook cadastrado</p>
+                </div>
+            </section>
+            
+            <!-- Teachers Section -->
+            <section id="teachers-section" class="content-section">
+                <div class="section-header">
+                    <h2>Gerenciar Professores</h2>
+                    <button class="btn btn-primary" id="addTeacherBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        Adicionar Professor
+                    </button>
+                </div>
+                
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Matrícula</th>
+                                <th>Disciplina</th>
+                                <th>Telefone</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="teachersTableBody">
+                        </tbody>
+                    </table>
+                    <p class="empty-state" id="noTeachersMsg">Nenhum professor cadastrado</p>
+                </div>
+            </section>
+            
+            <!-- Loans Section -->
+            <section id="loans-section" class="content-section">
+                <div class="section-header">
+                    <h2>Gerenciar Empréstimos</h2>
+                    <button class="btn btn-primary" id="newLoanBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        Novo Empréstimo
+                    </button>
+                </div>
+                
+                <div class="filters-bar">
+                    <div class="search-box">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" id="searchLoans" placeholder="Buscar empréstimos...">
+                    </div>
+                    <select id="filterLoanStatus" class="filter-select">
+                        <option value="all">Todos os Status</option>
+                        <option value="pending">Pendentes</option>
+                        <option value="returned">Devolvidos</option>
+                        <option value="overdue">Atrasados</option>
+                    </select>
+                </div>
+                
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Notebook</th>
+                                <th>Professor</th>
+                                <th>Data Saída</th>
+                                <th>Data Prevista</th>
+                                <th>Data Devolução</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="loansTableBody">
+                        </tbody>
+                    </table>
+                    <p class="empty-state" id="noLoansMsg">Nenhum empréstimo registrado</p>
+                </div>
+            </section>
+            
+            <!-- Returns Section -->
+            <section id="returns-section" class="content-section">
+                <div class="section-header">
+                    <h2>Devoluções</h2>
+                    <button class="btn btn-primary" id="newReturnBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="1 4 1 10 7 10"></polyline>
+                            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                        </svg>
+                        Registrar Devolução
+                    </button>
+                </div>
+                
+                <div class="filters-bar">
+                    <div class="search-box">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" id="searchReturns" placeholder="Buscar devoluções...">
+                    </div>
+                    <select id="filterReturnCondition" class="filter-select">
+                        <option value="all">Todas as Condições</option>
+                        <option value="Bom">Bom Estado</option>
+                        <option value="Regular">Estado Regular</option>
+                        <option value="Danificado">Danificado</option>
+                        <option value="Manutenção Necessária">Manutenção Necessária</option>
+                    </select>
+                </div>
+                
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Notebook</th>
+                                <th>Professor</th>
+                                <th>Data Devolução</th>
+                                <th>Condição</th>
+                                <th>Observações</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="returnsTableBody">
+                        </tbody>
+                    </table>
+                    <p class="empty-state" id="noReturnsMsg">Nenhuma devolução registrada</p>
+                </div>
+            </section>
+            
+            <!-- Reports Section -->
+            <section id="reports-section" class="content-section">
+                <div class="section-header">
+                    <h2>Relatórios</h2>
+                    <button class="btn btn-primary" id="exportReportBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Exportar Relatório
+                    </button>
+                </div>
+                
+                <div class="reports-grid">
+                    <div class="report-card">
+                        <div class="report-icon">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                        <h3>Estado dos Notebooks</h3>
+                        <div class="report-stats" id="notebookStateReport">
+                        </div>
+                    </div>
+                    
+                    <div class="report-card">
+                        <div class="report-icon">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Empréstimos por Professor</h3>
+                        <div class="report-stats" id="loansByTeacherReport">
+                        </div>
+                    </div>
+                    
+                    <div class="report-card">
+                        <div class="report-icon">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Empréstimos Atrasados</h3>
+                        <div class="report-stats" id="overdueLoansReport">
+                        </div>
+                    </div>
+                    
+                    <div class="report-card">
+                        <div class="report-icon">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2">
+                                <line x1="18" y1="20" x2="18" y2="10"></line>
+                                <line x1="12" y1="20" x2="12" y2="4"></line>
+                                <line x1="6" y1="20" x2="6" y2="14"></line>
+                            </svg>
+                        </div>
+                        <h3>Atividade Mensal</h3>
+                        <div class="report-stats" id="monthlyActivityReport">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-table-container">
+                    <h3>Condição dos Notebooks na Devolução</h3>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Notebook</th>
+                                    <th>Professor</th>
+                                    <th>Data Devolução</th>
+                                    <th>Condição</th>
+                                    <th>Observações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="returnConditionsReportBody">
+                            </tbody>
+                        </table>
+                        <p class="empty-state" id="noReturnConditionsMsg">Nenhuma devolução registrada</p>
+                    </div>
+                </div>
+                
+                <div class="report-table-container">
+                    <h3>Histórico Completo de Empréstimos</h3>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Notebook</th>
+                                    <th>Professor</th>
+                                    <th>Data Saída</th>
+                                    <th>Data Devolução</th>
+                                    <th>Duração (dias)</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="fullLoansReportBody">
+                            </tbody>
+                        </table>
+                        <p class="empty-state" id="noReportMsg">Nenhum dado disponível</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Notebook Modal -->
+    <div class="modal" id="notebookModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="notebookModalTitle">Adicionar Notebook</h3>
+                <button class="modal-close" data-modal="notebookModal">&times;</button>
+            </div>
+            <form id="notebookForm">
+                <input type="hidden" id="notebookId">
+                <div class="form-group">
+                    <label for="notebookBrand">Marca</label>
+                    <input type="text" id="notebookBrand" placeholder="Ex: Dell, HP, Lenovo" required>
+                </div>
+                <div class="form-group">
+                    <label for="notebookModel">Modelo</label>
+                    <input type="text" id="notebookModel" placeholder="Ex: Inspiron 15, ProBook 450" required>
+                </div>
+                <div class="form-group">
+                    <label for="notebookPatrimony">Patrimônio</label>
+                    <input type="text" id="notebookPatrimony" placeholder="Número do patrimônio" required>
+                </div>
+                <div class="form-group">
+                    <label for="notebookState">Estado</label>
+                    <select id="notebookState" required>
+                        <option value="Bom">Bom</option>
+                        <option value="Regular">Regular</option>
+                        <option value="Ruim">Ruim</option>
+                        <option value="Em Manutenção">Em Manutenção</option>
+                        <option value="Baixado">Baixado</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="notebookObservations">Observações</label>
+                    <textarea id="notebookObservations" rows="3" placeholder="Configurações, estado físico, acessórios, etc."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" data-modal="notebookModal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Teacher Modal -->
+    <div class="modal" id="teacherModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="teacherModalTitle">Adicionar Professor</h3>
+                <button class="modal-close" data-modal="teacherModal">&times;</button>
+            </div>
+            <form id="teacherForm">
+                <input type="hidden" id="teacherId">
+                <div class="form-group">
+                    <label for="teacherName">Nome Completo</label>
+                    <input type="text" id="teacherName" placeholder="Nome do professor" required>
+                </div>
+                <div class="form-group">
+                    <label for="teacherRegistration">Matrícula</label>
+                    <input type="text" id="teacherRegistration" placeholder="Número da matrícula" required>
+                </div>
+                <div class="form-group">
+                    <label for="teacherSubject">Disciplina</label>
+                    <input type="text" id="teacherSubject" placeholder="Ex: Matemática, Português" required>
+                </div>
+                <div class="form-group">
+                    <label for="teacherPhone">Telefone</label>
+                    <input type="tel" id="teacherPhone" placeholder="(00) 00000-0000" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" data-modal="teacherModal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Loan Modal -->
+    <div class="modal" id="loanModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Novo Empréstimo</h3>
+                <button class="modal-close" data-modal="loanModal">&times;</button>
+            </div>
+            <form id="loanForm">
+                <div class="form-group">
+                    <label for="loanNotebook">Notebook</label>
+                    <select id="loanNotebook" required>
+                        <option value="">Selecione um notebook</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="loanTeacher">Professor</label>
+                    <select id="loanTeacher" required>
+                        <option value="">Selecione um professor</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="loanDate">Data de Saída</label>
+                    <input type="date" id="loanDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="returnDate">Data Prevista de Devolução</label>
+                    <input type="date" id="returnDate" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" data-modal="loanModal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Registrar Empréstimo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Select Loan Modal (devolução por busca do professor) -->
+    <div class="modal" id="selectLoanModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Selecionar Empréstimo para Devolução</h3>
+                <button class="modal-close" data-modal="selectLoanModal">&times;</button>
+            </div>
+            <div class="form-group">
+                <label for="returnLoanSearch">Buscar por Professor ou Notebook</label>
+                <input type="text" id="returnLoanSearch" placeholder="Digite o nome do professor ou do notebook...">
+            </div>
+            <div class="form-group">
+                <label for="returnLoanSelect">Empréstimos Ativos</label>
+                <select id="returnLoanSelect" required>
+                    <option value="">Selecione o empréstimo...</option>
+                </select>
+            </div>
+            <p class="empty-state" id="returnLoanSearchCount" style="margin-top:0;font-size:0.85rem;"></p>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" data-modal="selectLoanModal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="continueReturnBtn">Continuar</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Return Modal -->
+    <div class="modal" id="returnModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Registrar Devolução</h3>
+                <button class="modal-close" data-modal="returnModal">&times;</button>
+            </div>
+            <form id="returnForm">
+                <input type="hidden" id="returnLoanId">
+                <div class="form-group">
+                    <label for="returnNotebookInfo">Notebook</label>
+                    <input type="text" id="returnNotebookInfo" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="returnTeacherInfo">Professor</label>
+                    <input type="text" id="returnTeacherInfo" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="returnLoanDateInfo">Data de Saída</label>
+                    <input type="text" id="returnLoanDateInfo" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="returnPlannedDate">Data Prevista</label>
+                    <input type="text" id="returnPlannedDate" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="returnActualDate">Data da Devolução</label>
+                    <input type="date" id="returnActualDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="returnCondition">Condição do Notebook</label>
+                    <select id="returnCondition" required>
+                        <option value="">Selecione a condição</option>
+                        <option value="Bom">Bom Estado - Sem danos</option>
+                        <option value="Regular">Estado Regular - Uso normal</option>
+                        <option value="Danificado">Danificado - Com avarias</option>
+                        <option value="Manutenção Necessária">Manutenção Necessária</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="returnObservations">Observações</label>
+                    <textarea id="returnObservations" rows="4" placeholder="Descreva o estado do notebook, danos encontrados, acessórios devolvidos, etc."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" data-modal="returnModal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Confirmar Devolução</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- View Return Details Modal -->
+    <div class="modal" id="viewReturnModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Detalhes da Devolução</h3>
+                <button class="modal-close" data-modal="viewReturnModal">&times;</button>
+            </div>
+            <div class="return-details">
+                <div class="detail-row">
+                    <label>Notebook:</label>
+                    <span id="viewReturnNotebook"></span>
+                </div>
+                <div class="detail-row">
+                    <label>Professor:</label>
+                    <span id="viewReturnTeacher"></span>
+                </div>
+                <div class="detail-row">
+                    <label>Data Saída:</label>
+                    <span id="viewReturnLoanDate"></span>
+                </div>
+                <div class="detail-row">
+                    <label>Data Devolução:</label>
+                    <span id="viewReturnDate"></span>
+                </div>
+                <div class="detail-row">
+                    <label>Condição:</label>
+                    <span id="viewReturnCondition"></span>
+                </div>
+                <div class="detail-row full-width">
+                    <label>Observações:</label>
+                    <p id="viewReturnObservations"></p>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" data-modal="viewReturnModal">Fechar</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Confirm Delete Modal -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h3>Confirmar Exclusão</h3>
+                <button class="modal-close" data-modal="confirmModal">&times;</button>
+            </div>
+            <p id="confirmMessage">Tem certeza que deseja excluir este item?</p>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" data-modal="confirmModal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Excluir</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

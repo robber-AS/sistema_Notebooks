@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos - Técnico em Administração</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1e3a8a 60%, #3b82f6 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+.card-icon.notebook {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+}
+
+.card-icon.canvas {
+    background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+}
+
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #1e293b;
+        }
+
+        .card p {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .card-features li {
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+            color: #475569;
+        }
+
+.card-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #3b82f6;
+    font-weight: bold;
+}
+
+.card-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    color: white;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .card:hover .card-btn {
+            transform: translateX(5px);
+        }
+
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 500px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Projetos Acadêmicos</h1>
+            <p>Técnico em Administração</p>
+        </div>
+        
+        <div class="cards">
+            <a href="index.html" class="card">
+                <div class="card-icon notebook">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                </div>
+                <h2>Sistema de Empréstimo</h2>
+                <p>Gerenciamento de notebooks para professores da instituição.</p>
+                <ul class="card-features">
+                    <li>Login administrativo seguro</li>
+                    <li>Cadastro de notebooks e professores</li>
+                    <li>Controle de empréstimos e devoluções</li>
+                    <li>Dashboard com estatísticas</li>
+                </ul>
+                <span class="card-btn">
+                    Acessar Sistema
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </span>
+            </a>
+            
+            <a href="canvas.html" class="card">
+                <div class="card-icon canvas">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                        <line x1="9" y1="3" x2="9" y2="21"></line>
+                        <line x1="15" y1="3" x2="15" y2="21"></line>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="3" y1="15" x2="21" y2="15"></line>
+                    </svg>
+                </div>
+                <h2>Business Model Canvas</h2>
+                <p>Apresentação interativa sobre os 9 blocos do modelo de negócio.</p>
+                <ul class="card-features">
+                    <li>15 slides explicativos</li>
+                    <li>Exemplos práticos e reais</li>
+                    <li>Atividades interativas</li>
+                    <li>Navegação por teclado e touch</li>
+                </ul>
+                <span class="card-btn">
+                    Ver Apresentação
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </span>
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>Desenvolvido para a disciplina de Técnico em Administração</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Sistema de Empréstimo de Notebooks</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+            </div>
+            <h1>Sistema de Empréstimo</h1>
+            <p class="subtitle">Crie sua conta</p>
+            
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" placeholder="Digite seu nome completo" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="usuario">Usuário</label>
+                    <input type="text" id="usuario" placeholder="Escolha um nome de usuário" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email (opcional)</label>
+                    <input type="email" id="email" placeholder="seu@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" placeholder="Mínimo 6 caracteres" required minlength="6">
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmarSenha">Confirmar Senha</label>
+                    <input type="password" id="confirmarSenha" placeholder="Digite a senha novamente" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+            </form>
+            
+            <p class="login-link">
+                Já tem conta? <a href="index.html">Faça login</a>
+            </p>
+        </div>
+    </div>
+    
+    <script src="js/api.js"></script>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const nome = document.getElementById('nome').value.trim();
+            const usuario = document.getElementById('usuario').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const senha = document.getElementById('senha').value;
+            const confirmarSenha = document.getElementById('confirmarSenha').value;
+            
+            if (senha !== confirmarSenha) {
+                alert('As senhas não conferem.');
+                return;
+            }
+            
+            if (senha.length < 6) {
+                alert('A senha deve ter pelo menos 6 caracteres.');
+                return;
+            }
+            
+            try {
+                const result = await API.register(nome, usuario, senha, email);
+                
+                localStorage.setItem('isLoggedIn', 'true');
+                
+                alert('Cadastro realizado com sucesso!');
+                window.location.href = 'admin.html';
+            } catch (error) {
+                alert('Erro: ' + error.message);
+            }
+        });
+        
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = 'admin.html';
+        }
+    </script>
+</body>
+</html>

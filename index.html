@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Empréstimo de Notebooks</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+            </div>
+            <h1>Sistema de Empréstimo</h1>
+            <p class="subtitle">Acesse sua conta</p>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Usuário</label>
+                    <input type="text" id="username" placeholder="Digite seu usuário" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" placeholder="Digite sua senha" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+            </form>
+            
+            <p class="login-link">
+                Não tem conta? <a href="register.html">Cadastre-se</a>
+            </p>
+        </div>
+    </div>
+    
+    <script src="js/api.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                const result = await API.login(username, password);
+                const user = result.data;
+                
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('usuario', user.usuario);
+                localStorage.setItem('nome', user.nome || username);
+                
+                window.location.href = 'admin.html';
+            } catch (error) {
+                alert('Erro: ' + error.message);
+            }
+        });
+
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = 'admin.html';
+        }
+    </script>
+</body>
+</html>
